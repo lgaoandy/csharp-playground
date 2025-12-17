@@ -1,0 +1,9 @@
+# Ignore all directores named bin
+**/bin/
+
+# Ignore common temp build artifacts
+**/obj/
+**/dist/
+**/out/
+*.tmp
+*.log
