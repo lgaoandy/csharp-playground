@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/01-Basics/">
+    <Project Path="01-Basics/ArrayManipulation/ArrayManipulation.csproj" />
+  </Folder>
   <Folder Name="/02-ObjectOriented/">
     <Project Path="02-ObjectOriented/ClassInheritance/ClassInheritance.csproj" />
   </Folder>
