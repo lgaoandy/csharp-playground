@@ -4,5 +4,6 @@
   </Folder>
   <Folder Name="/02-ObjectOriented/">
     <Project Path="02-ObjectOriented/ClassInheritance/ClassInheritance.csproj" />
+    <Project Path="02-ObjectOriented/Polymorphism/Polymorphism.csproj" />
   </Folder>
 </Solution>
