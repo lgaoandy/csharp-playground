@@ -1,7 +1,7 @@
 using System.Drawing;
 using Pastel;
 
-namespace InheritanceClasses;
+namespace InheritanceSpa;
 
 public class Pool
 {
