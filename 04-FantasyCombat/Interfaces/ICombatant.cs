@@ -1,0 +1,13 @@
+namespace CombatSystem.Interfaces
+{
+    public interface ICombatant
+    {
+        string Name { get; }
+        int Health { get; }
+        int MaxHealth { get; }
+        bool IsAlive { get; }
+        void Attack(ICombatant target);
+        void TakeDamage(int amount);
+        void DisplayStatus();
+    }
+}
