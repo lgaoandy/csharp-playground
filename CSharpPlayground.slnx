@@ -1,9 +1,11 @@
 <Solution>
-  <Folder Name="/01-Basics/">
-    <Project Path="01-Basics/ArrayManipulation/ArrayManipulation.csproj" />
+  <Folder Name="/01-ToDoList/">
+    <Project Path="01-ToDoList/ToDoList.csproj" />
   </Folder>
-  <Folder Name="/02-ObjectOriented/">
-    <Project Path="02-ObjectOriented/ClassInheritance/ClassInheritance.csproj" />
-    <Project Path="02-ObjectOriented/Polymorphism/Polymorphism.csproj" />
+  <Folder Name="/02-PoolSpa/">
+    <Project Path="02-PoolSpa/PoolSpa.csproj" />
+  </Folder>
+  <Folder Name="/03-BankSavings/">
+    <Project Path="03-BankSavings/BankSavings.csproj" />
   </Folder>
 </Solution>
