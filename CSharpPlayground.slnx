@@ -8,4 +8,7 @@
   <Folder Name="/03-BankSavings/">
     <Project Path="03-BankSavings/BankSavings.csproj" />
   </Folder>
+  <Folder Name="/04-FantasyCombat/">
+    <Project Path="04-FantasyCombat/FantasyCombat.csproj" />
+  </Folder>
 </Solution>
