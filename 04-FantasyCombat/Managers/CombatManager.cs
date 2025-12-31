@@ -9,12 +9,14 @@ namespace CombatSystem.Managers.CombatManager
     {
         public static void Introduce(ICombatant c)
         {
-            if (c is Warrior w) 
+            if (c is Warrior w)
                 Console.WriteLine($"{w.Name} is a warrior with {w.Strength} strength and {w.Health} HP.");
             else if (c is Elementalist e)
                 Console.WriteLine($"{e.Name} is a {e.Intelligence} intelligence elementalist and {e.Health} HP.");
             else if (c is Monster m)
                 Console.WriteLine($"{m.Name} is a monster with {m.Strength} strength and {m.Health} HP.");
+            else if (c is Monk k)
+                Console.WriteLine($"{k.Name} is a monk with {k.Constitution} constitution and {k.Health} HP.");
             else
                 Console.WriteLine($"{c.Name} enters the fray!");
         }

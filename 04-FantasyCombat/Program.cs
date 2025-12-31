@@ -6,11 +6,11 @@ using CombatSystem.Models.Enemies;
 using Pastel;
 
 Warrior gunnar = new("Gunnar", 3, 135);
-Elementalist terra = new("Terra", 4, 130);
-Elementalist sylvia = new("Sylvia", 7, 125);
+Monk collin = new("Collin", 5, 140);
+Elementalist terra = new("Terra", 7, 125);
 Warrior doyum = new("Doyum", 6, 190);
 
-Monster scarecrow = new("Scarecrow", 20, 1);
+Monster scarecrow = new("Scarecrow", 30, 1);
 Monster giantRat = new("Giant Rat", 30, 3);
 Monster bigBadWolf = new("Big Bad Wolf", 40, 7);
 Monster sewerWorm = new("Sewer Worm", 70, 5);
@@ -19,10 +19,10 @@ Console.WriteLine("\n===== Match 1 =====".Pastel(Color.White));
 ICombatant winner1 = CombatManager.Fight(gunnar, scarecrow);
 
 Console.WriteLine("\n===== Match 2 =====".Pastel(Color.White));
-ICombatant winner2 = CombatManager.Fight(terra, giantRat);
+ICombatant winner2 = CombatManager.Fight(collin, giantRat);
 
 Console.WriteLine("\n===== Match 3 =====".Pastel(Color.White));
-ICombatant winner3 = CombatManager.Fight(sylvia, bigBadWolf);
+ICombatant winner3 = CombatManager.Fight(terra, bigBadWolf);
 
 Console.WriteLine("\n===== Match 4 =====".Pastel(Color.White));
 ICombatant winner4 = CombatManager.Fight(doyum, sewerWorm);
