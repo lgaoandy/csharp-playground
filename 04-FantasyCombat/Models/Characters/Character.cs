@@ -24,9 +24,9 @@ namespace CombatSystem.Models.Characters
 
         public void TakeDamage(int amount)
         {
-            Health -= amount;
+            Health -= Math.Max(amount, 0);
             // Check if character is still alive
-            if (Health < 0)
+            if (Health == 0)
             {
                 IsAlive = false;
                 Console.WriteLine($"{Name} has been slain!");
