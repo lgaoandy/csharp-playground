@@ -3,24 +3,49 @@ using CombatSystem.Interfaces;
 
 namespace CombatSystem.Models.Enemies
 {
-    public class Monster(string name = "Monster", int maxHealth = 50) : ICombatant
+    public class Monster(string name = "Monster", int maxHealth = 50, int strength = 3) : ICombatant
     {
         public string Name { get; } = name;
         public int Health { get; private set; } = maxHealth;
         public int MaxHealth { get; } = maxHealth;
         public bool IsAlive { get; private set; } = true;
-        public Debuff[] Debuffs { get; } = [];
+        public Debuff[] Debuffs { get; private set; } = [];
+        private int Strength { get; } = strength;
 
         public void Attack(ICombatant target)
         {
             Random rnd = new();
-            int damage = rnd.Next(1, 4);
+
+            // If frostbitten, 30% chance to freeze. Effect wores off if frozen
+            if (Debuffs.Contains(Debuff.FrostBitten))
+            {
+                int hitChance = rnd.Next(101);
+                if (hitChance < 30)
+                {
+                    Console.WriteLine($"{Name} is frostbitten - freezing in place and unable to attack!");
+                    Debuffs = (Debuff[])Debuffs.Where(debuff => debuff != Debuff.FrostBitten);
+                    return;
+                }
+            }
+            
+            // Standard attack
+            int damage = rnd.Next(1, Strength + 1);
             target.TakeDamage(damage);
         }
 
         public void TakeDamage(int damage)
         {
             Health -= Math.Max(damage, 0);
+
+            // If immolated, burns for 2% of max health
+            if (Debuffs.Contains(Debuff.Immolated))
+            {
+                int burn = (int)Math.Ceiling(MaxHealth * 0.02);
+                Health -= burn;
+                Console.WriteLine($"{Name} is immolated - burning for {burn} bonus damage!");
+            }
+
+            // Check if monster is still alive
             if (Health == 0)
             {
                 IsAlive = false;
