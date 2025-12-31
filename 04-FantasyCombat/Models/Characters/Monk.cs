@@ -29,8 +29,8 @@ namespace CombatSystem.Models.Characters
 
         public override bool SpecialAbility(ICombatant target)
         {
-            int damage = CalculateAttackDamage();
-            target.TakeDamage(damage + (int)Math.Round(Constitution * 1.25));
+            int damage = CalculateAttackDamage() + (int)Math.Round(Constitution * 1.25);
+            target.TakeDamage(damage);
             Health = Math.Min(MaxHealth, Health + Constitution);
             Console.WriteLine($"{Name} uses {SpecialAbilityName} on {target.Name} for {damage} damage, and healing {Constitution} HP!");
             return true;
