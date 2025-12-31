@@ -22,7 +22,7 @@ namespace CombatSystem.Models.Characters
             target.TakeDamage(damage);
         }
 
-        public void TakeDamage(int amount)
+        public virtual void TakeDamage(int amount)
         {
             Health -= Math.Max(amount, 0);
             // Check if character is still alive
@@ -42,11 +42,12 @@ namespace CombatSystem.Models.Characters
             Console.WriteLine($"{Name}: {Health}/{MaxHealth} HP");
         }
 
-        public virtual void SpecialAbility(ICombatant target)
+        public virtual bool SpecialAbility(ICombatant target)
         {
             int damage = CalculateAttackDamage();
             target.TakeDamage(damage * 2);
             Console.WriteLine($"{Name} uses {SpecialAbilityName} on {target.Name} for {damage} damage!");
+            return true;
         }
     }
 }

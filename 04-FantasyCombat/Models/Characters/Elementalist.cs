@@ -9,18 +9,34 @@ namespace CombatSystem.Models.Characters
         public new string Name { get; } = name;
         public new int Health { get; private set; } = maxHealth;
         public new int MaxHealth { get; } = maxHealth;
-        protected new string SpecialAbilityName { get; } = "Swap Element";
+        protected new string SpecialAbilityName { get; } = "Elemental Visage";
 
         // Distinct properties
-        protected int Intelligence { get; set; } = Intelligence;
+        public int Intelligence { get; set; } = Intelligence;
         public int Mana = 20 + 5 * Intelligence;
         public int MaxMana = 20 + 5 * Intelligence;
         protected Element[] Elements = [Element.Fire, Element.Ice];
         protected Element CurrentElement = Element.Fire;
+        protected bool ManaShield = false;
+        protected int ManaShieldStrength = 5;
 
         protected override int CalculateAttackDamage()
         {
             return BaseDamage + (int)Math.Floor(Intelligence / 2.0);
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            // If have mana shield, absorbs amount first
+            if (ManaShield)
+            {
+                amount -= ManaShieldStrength;
+                ManaShield = false;
+            }
+            if (amount > 0)
+            {
+                base.TakeDamage(amount);
+            }
         }
 
         protected void RegenMana(int manaRegen)
@@ -79,14 +95,22 @@ namespace CombatSystem.Models.Characters
         }
 
         // Modify special ability to swap elements
-        public override void SpecialAbility(ICombatant target)
+        public override bool SpecialAbility(ICombatant target)
         {
-            CurrentElement = CurrentElement switch
+            if (Mana >= 8)
             {
-                Element.Fire => Element.Ice,
-                Element.Ice => Element.Fire,
-                _ => CurrentElement
-            };
+                Mana -= 8;
+                ManaShield = true;
+                CurrentElement = CurrentElement switch
+                {
+                    Element.Fire => Element.Ice,
+                    Element.Ice => Element.Fire,
+                    _ => CurrentElement
+                };
+                Console.WriteLine($"{Name} uses {SpecialAbilityName} - gaining a mana shield and swapped to {CurrentElement} element!");
+                return true;
+            }
+            return false;
         }
         
     }

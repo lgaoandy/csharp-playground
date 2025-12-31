@@ -10,7 +10,7 @@ namespace CombatSystem.Models.Enemies
         public int MaxHealth { get; } = maxHealth;
         public bool IsAlive { get; private set; } = true;
         public Debuff[] Debuffs { get; private set; } = [];
-        private int Strength { get; } = strength;
+        public int Strength { get; } = strength;
 
         public void Attack(ICombatant target)
         {

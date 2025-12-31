@@ -11,7 +11,7 @@ namespace CombatSystem.Models.Characters
         protected new int BaseDamage { get; } = 2;
         protected new string SpecialAbilityName { get; } = "Heaven's Smash";
 
-        protected int Strength { get; set; } = strength;
+        public int Strength { get; set; } = strength;
         protected int Fervor { get; private set; } = 0;
         protected int MaxFervor { get; } = 100;
 
@@ -34,7 +34,7 @@ namespace CombatSystem.Models.Characters
             return (int)Math.Floor(damage * fervorMult);
         }
 
-        public override void SpecialAbility(ICombatant target)
+        public override bool SpecialAbility(ICombatant target)
         {
             if (Fervor == MaxFervor)
             {
@@ -42,11 +42,9 @@ namespace CombatSystem.Models.Characters
                 int damage = (BaseDamage + Strength) * 4;
                 target.TakeDamage(damage);
                 Console.WriteLine($"{Name} uses {SpecialAbilityName} - dealing a massive {damage} critical hit!");
+                return true;
             }
-            else
-            {
-                Console.WriteLine($"Cannot use {SpecialAbilityName} - not enough fervor!");
-            }
+            return false;
         }
     }
 }
