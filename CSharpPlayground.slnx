@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/00-ConsolePlayground/">
+    <Project Path="00-ConsolePlayground/Playground.csproj" />
+  </Folder>
   <Folder Name="/01-ToDoList/">
     <Project Path="01-ToDoList/ToDoList.csproj" />
   </Folder>
