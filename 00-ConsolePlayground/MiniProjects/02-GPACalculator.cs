@@ -1,7 +1,5 @@
 // https://learn.microsoft.com/en-us/training/modules/guided-project-calculate-final-gpa/2-prepare
 
-using System.Runtime.CompilerServices;
-
 namespace MiniProjects.GPACalculator
 {
     class GPACalculator
