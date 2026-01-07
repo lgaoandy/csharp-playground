@@ -21,37 +21,66 @@ namespace MiniProjects.StudentGrading
             return "F";
         }
 
-        static decimal CalculateAverage(int[] scores)
+        static decimal CalculateExamAverage(int[] scores, int exams)
         {
             decimal average = 0;
-            foreach (int score in scores)
+            for (int i = 0; i < exams; i++)
             {
-                average += score;
+                average += scores[i];
             }
-            return Math.Round(average / scores.Length, 2);
+            return average / exams;
+        }
+
+        static decimal CalculateExtraCredit(int[] scores, int exams)
+        {
+            decimal average = 0;
+            for (int i = exams; i < scores.Length; i++)
+            {
+                average += scores[i] / 10; // extra credit weigh 10%
+            }
+            return average / exams;
         }
 
         public static void Run()
         {
-            Console.WriteLine($"Student\t\tGrade\n");
+            Console.WriteLine($"Student\t\tGrade");
+            Console.WriteLine($"       \t\tExams Only\tWith Credits\n");
 
-            string[] students = ["Sophia", "Andrew", "Emma", "Logan"];
+            const int exams = 5;
+            string[] students = ["Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor", "Justin", "Doyum"];
             int[][] scores = [
-                [90, 86, 87, 98, 100],
-                [92, 89, 81, 96, 90],
-                [90, 85, 87, 98, 68],
-                [90, 95, 87, 88, 96]
+                [90, 86, 87, 98, 100, 94, 90],
+                [92, 89, 81, 96, 90, 89],
+                [90, 85, 87, 98, 68, 89, 89, 89],
+                [90, 95, 87, 88, 96, 96],
+                [92, 91, 90, 91, 92, 92, 92],
+                [84, 86, 88, 90, 92, 94, 96, 98],
+                [80, 90, 100, 80, 90, 100, 80, 90],
+                [91, 91, 91, 91, 91, 91, 91],
+                [55, 72, 62, 69, 57, 85, 91, 89, 92, 94],
+                [95, 94, 98, 100, 91, 100, 100, 100],
             ];
 
             int i = 0;
             foreach (string student in students)
             {
                 // Calculate average
-                decimal average = CalculateAverage(scores[i]);
-                string letterGrade = AssignLetterGrade(average);
+                decimal average = CalculateExamAverage(scores[i], exams);
+                decimal credits = CalculateExtraCredit(scores[i], exams);
+                decimal averageWithCredits = average + credits;
+
+                // Ensure the max you can get is 100%
+                averageWithCredits = Math.Min(100, averageWithCredits);
+
+                // Round averages
+                average = Math.Round(average, 2);
+                averageWithCredits = Math.Round(averageWithCredits, 2);
+
+                string grade = AssignLetterGrade(average);
+                string gradeWithCredits = AssignLetterGrade(averageWithCredits);
 
                 // Print 
-                Console.WriteLine($"{student}:\t\t{average}\t{letterGrade}");
+                Console.WriteLine($"{student}:\t\t{average}\t{grade}\t{averageWithCredits}\t{gradeWithCredits}");
                 i++;
             }
 
