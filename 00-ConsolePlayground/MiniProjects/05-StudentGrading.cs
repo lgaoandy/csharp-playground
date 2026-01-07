@@ -1,3 +1,5 @@
+// https://learn.microsoft.com/en-ca/training/modules/guided-project-arrays-iteration-selection/
+
 namespace MiniProjects.StudentGrading
 {
     class StudentGrading

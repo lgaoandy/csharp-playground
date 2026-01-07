@@ -1,3 +1,5 @@
+// https://learn.microsoft.com/en-ca/training/modules/csharp-arrays/4-exercise-challenge-nested-iteration
+
 namespace MiniProjects.FraudulentOrders
 {
     class FraudulentOrders

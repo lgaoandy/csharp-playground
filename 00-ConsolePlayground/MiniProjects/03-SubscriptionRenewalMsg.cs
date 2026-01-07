@@ -1,3 +1,5 @@
+// https://learn.microsoft.com/en-ca/training/modules/csharp-if-elseif-else/4-exercise-challenge-apply-business-rules
+
 namespace MiniProjects.SubscriptionRenewalMessage
 {
     class SubscriptionRenewalMessage
