@@ -3,6 +3,7 @@ using MiniProjects.GPACalculator;
 using MiniProjects.SubscriptionRenewalMessage;
 using MiniProjects.FraudulentOrders;
 using MiniProjects.StudentGrading;
+using MiniProjects.PermissionsAndLevels;
 
 class Program
 {
@@ -12,7 +13,8 @@ class Program
         // GPACalculator.Run();
         // SubscriptionRenewalMessage.Display();
         // FraudulentOrders.Detect();
-        StudentGrading.Run();
+        // StudentGrading.Run();
+        PermissionsAndLevels.Run();
 
 
     }
