@@ -4,6 +4,7 @@ using MiniProjects.SubscriptionRenewalMessage;
 using MiniProjects.FraudulentOrders;
 using MiniProjects.StudentGrading;
 using MiniProjects.PermissionsAndLevels;
+using MiniProjects.FizzBuzz;
 
 class Program
 {
@@ -14,7 +15,8 @@ class Program
         // SubscriptionRenewalMessage.Display();
         // FraudulentOrders.Detect();
         // StudentGrading.Run();
-        PermissionsAndLevels.Run();
+        // PermissionsAndLevels.Run();
+        FizzBuzz.Run(100);
 
 
     }
